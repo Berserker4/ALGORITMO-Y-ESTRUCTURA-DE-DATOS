@@ -3,5 +3,5 @@ def invertir_cadena(cadena):
         return cadena
     else:
         return cadena[-1] + invertir_cadena(cadena[:-1])
-cadena = "Hola Mundo"
+cadena = "Buenas tardes"
 print(invertir_cadena(cadena))
