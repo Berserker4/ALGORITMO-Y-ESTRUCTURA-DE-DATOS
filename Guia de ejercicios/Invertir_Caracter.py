@@ -1,7 +1,7 @@
-def invertir_cadena(cadena):
-    if len(cadena) <= 1:
-        return cadena
+def invertir_Caracter(Caracter):
+    if len(Caracter) <= 1:
+        return Caracter
     else:
-        return cadena[-1] + invertir_cadena(cadena[:-1])
-cadena = "Buenas tardes"
-print(invertir_cadena(cadena))
+        return Caracter[-1] + invertir_Caracter(Caracter[:-1])
+Caracter = "Buenas tardes"
+print(invertir_Caracter(Caracter))
