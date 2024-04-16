@@ -36,6 +36,7 @@ print(pila_bastos.size())
 print(pila_copas.size())
 print(pila_espadas.size())
 print(pila_oros.size())
+print
 
     
     
