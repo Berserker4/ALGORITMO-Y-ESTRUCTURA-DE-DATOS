@@ -1,7 +1,7 @@
+from pila import Stack
 import random
-from Pila import Stack
 
-palos_cartas = ["Oros", "Copas", "Espadas" , "Bastos"]
+palos_cartas = ["Oro", "Copa", "Espada" , "Basto"]
 valores_cartas = ["1","2","3","4","5","6","7","10","11","12"]
 
 pila = Stack()
@@ -11,31 +11,32 @@ pila_espadas= Stack()
 pila_bastos = Stack()
 
 
-def mazo_aleatoreo():
-    mazo = [(valor, palos) for valor in valores_cartas for palos in palos_cartas]
-    random.shuffle(mazo)
-    for carta in mazo:
-        pila.append(carta)
-        return pila
+mazo = [(valor, palos) for valor in valores_cartas for palos in palos_cartas]
+random.shuffle(mazo)
+for carta in mazo:
+    pila.push(carta)
 
 
-pila_cartas = mazo_aleatoreo()
-
-print("Cartas alatoreas:")
-while pila_cartas:
-    carta = pila_cartas.pop()
-    print(carta[0], "de", carta[1])
+print("Cartas aleatoreas:")
+print(pila.on_top())
     
-while pila_cartas.size() > 1:
-    data = pila_cartas.pop()
-    if data == "Oros": 
-        data.push(pila_oros)
-    elif data == "Copas":
-        data.push(pila_copas)
-    elif data == "Espadas":
-        data.push(pila_espadas)
-    elif data == "Bastos":
-        data.push(pila_bastos)
+while pila.size() > 1:
+    data = pila.pop()
+    if data[1] == "Oro": 
+        pila_oros.push(data)
+    elif data[1] == "Copa":
+        pila_copas.push(data)
+    elif data[1] == "Espada":
+        pila_espadas.push(data)
+    elif data[1] == "Basto":
+        pila_bastos.push(data)
+    
+    
+print(pila_bastos.size())
+print(pila_copas.size())
+print(pila_espadas.size())
+print(pila_oros.size())
+
     
     
     
