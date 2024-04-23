@@ -3,36 +3,31 @@ import os
 
 Episodio_V = Stack()
 Episodio_VII = Stack()
-pila1 = Stack()
-pila2 = Stack()
-
 for i in range(5):
-    personajes_episodio5 = input("Ingresa personajes del Episodio V: ")
-    Episodio_V.push(personajes_episodio5)
-    # os.system("cls")
-
+    Personajes_Episodio5 = input(print("Ingresa personajes",i+1,"del Episodio V: "))
+    Episodio_V.push(Personajes_Episodio5)
+    os.system("cls") #Lo uso para una mayor comodidad visual
 for i in range(5):
-    personajes_episodio7 = input("Ingresa personajes del Episodio VII: ")
-    Episodio_VII.push(personajes_episodio7)
-    # os.system("cls")
+    Personajes_Episodio7 = input(print("Ingresa personajes",i+1,"del Episodio VII: " ))
+    Episodio_VII.push(Personajes_Episodio7)
+    os.system("cls") 
 
 def interseccion_pilas(pila1, pila2):
-    aux = []
-    encontrados = Stack()
+    elementos_comunes = []
+    temp_stack = Stack()
 
-    while not pila1.size() == 0:
+    # Vaciar pila1 en temp_stack y comparar cada elemento con pila2
+    while not pila1.is_empty():
         personaje = pila1.pop()
-        encontrados.push(personaje)
-        pila2_temp = pila2
-        while not pila2_temp.size() == 0:
-            if personaje == pila2_temp.pop():
-                aux.append(personaje)
-                break
+        temp_stack.push(personaje)
+        if personaje in pila2:
+            elementos_comunes.append(personaje)
 
-    while not encontrados.size() == 0:
-        pila1.push(encontrados.pop())
-    
-    return aux
+    # Restaurar pila1 desde temp_stack
+    while not temp_stack.is_empty():
+        pila1.push(temp_stack.pop())
+
+    return elementos_comunes
 
 interseccion_personajes = interseccion_pilas(Episodio_V, Episodio_VII)
 print("Personajes que aparecen en ambos episodios:")

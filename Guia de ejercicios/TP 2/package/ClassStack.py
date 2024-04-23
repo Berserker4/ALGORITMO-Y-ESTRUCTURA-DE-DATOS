@@ -1,4 +1,3 @@
-
 class Stack:
 
     def __init__(self):
@@ -12,7 +11,8 @@ class Stack:
             return self.__elements.pop()
         else:
             return None
-
+    def is_empty(self):
+        return len(self.__elements) == 0
     def on_top(self):
         if len(self.__elements) > 0:
             return self.__elements[-1]
