@@ -3,6 +3,8 @@ import os
 
 Episodio_V = Stack()
 Episodio_VII = Stack()
+pila1 = Stack()
+pila2 = Stack()
 
 for i in range(5):
     personajes_episodio5 = input("Ingresa personajes del Episodio V: ")
@@ -15,8 +17,6 @@ for i in range(5):
     # os.system("cls")
 
 def interseccion_pilas(pila1, pila2):
-    pila1 = Stack()
-    pila2 = Stack()
     aux = []
     encontrados = Stack()
 
@@ -36,6 +36,5 @@ def interseccion_pilas(pila1, pila2):
 
 interseccion_personajes = interseccion_pilas(Episodio_V, Episodio_VII)
 print("Personajes que aparecen en ambos episodios:")
-print(interseccion_personajes)
 for personaje in interseccion_personajes:
     print(personaje)
