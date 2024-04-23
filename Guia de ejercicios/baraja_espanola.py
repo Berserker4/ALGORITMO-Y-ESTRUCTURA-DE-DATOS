@@ -30,13 +30,13 @@ while pila.size() > 1:
         pila_espadas.push(data)
     elif data[1] == "Basto":
         pila_bastos.push(data)
-    
-    
+        
+
 print(pila_bastos.size())
 print(pila_copas.size())
-print(pila_espadas.size())
 print(pila_oros.size())
-print
+print(pila_espadas.size())
+
 
     
     
