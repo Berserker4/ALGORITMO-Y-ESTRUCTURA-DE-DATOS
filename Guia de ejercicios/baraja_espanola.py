@@ -1,4 +1,4 @@
-from pila import Stack
+from Pila import Stack
 import random
 
 palos_cartas = ["Oro", "Copa", "Espada" , "Basto"]
