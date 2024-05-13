@@ -12,41 +12,37 @@
 #c. determinar en cuantas películas participo la Viuda Negra (Black Widow);
 #d. mostrar todos los personajes cuyos nombre empiezan con C, D y G.
 
+class Personaje:
+    def __init__(self, nombre, cantidad_peliculas):
+        self.nombre = nombre
+        self.cantidad_peliculas = cantidad_peliculas
+    
+    def __str__(self):
+        return f"{self.nombre} {self.cantidad_peliculas}"
+
+personajes = [
+    {'nombre': 'Rocket Raccoon', 'pelis': 4},
+    {'nombre': 'Iron Man', 'pelis': 6},
+    {'nombre': 'Capitan America', 'pelis': 5},
+    {'nombre': 'Groot', 'pelis': 4},
+    {'nombre': 'Black Widow', 'pelis': 7},
+    {'nombre': 'Loki', 'pelis': 4},
+]
 from package.ClassStack import Stack
-from package.ClassQueue import Queue
+pila = Stack()
+for pers in personajes:
+    pila.push(Personaje(pers['nombre'],pers['pelis']))
 
-Datos = Stack()
-
-Datos.push("Iron Man")
-Datos.push("Captain America")
-Datos.push("Rocket Raccoon")
-Datos.push("Groot")
-Datos.push("Thor")
-Datos.push("Hulk")
-Datos.push("Black Widow")
-Datos.push("Doctor Strange")
-
-def positions_rocket_y_groot(Datos):
-    positions = []
-    position = Datos.size()  
-    while not Datos.is_empty():
-        personaje = Datos.pop()
-        if personaje == "Rocket Raccoon" or personaje == "Groot":
-            positions.append(position)
-        position -= 1
-        
-    return positions   
-
-print("Posición de Rocket Raccoon y Groot:", positions_rocket_y_groot(Datos))
-
-Letras = ["C", "D", "G"]
-aux = Stack()
-while not Datos.is_empty():
-    elemento = Datos.pop()
-    if elemento[0][0] in Letras:
-        aux.push(elemento)  
-    Datos.push(elemento)  
-
-print("Personajes que empiezan con C, D y G:")
-while not aux.is_empty():
-    print(aux.pop())
+iniciales = ['C','D','G']
+pos = pila.size()+1
+while(not pila.is_empty()):
+    pos -= 1
+    dato = pila.pop()
+    if(dato.nombre == "Rocket Raccoon" or dato.nombre == "Groot"):
+        print(dato.nombre,"se encuentra en la posicion",pos)
+    elif(dato.nombre == "Black Widow"):
+        print("Black Widow participo en",dato.cantidad_peliculas,"peliculas")
+    if(dato.cantidad_peliculas > 5):
+        print(dato.nombre,"participo en",dato.cantidad_peliculas,"peliculas")
+    if(dato.nombre[0] in iniciales):
+        print(dato)
