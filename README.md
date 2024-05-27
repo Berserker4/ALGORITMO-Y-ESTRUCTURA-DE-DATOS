@@ -1,1 +1,0 @@
-Alumno: Francisco Sanchez
