@@ -1,6 +1,5 @@
 from ClassQueue import Queue
 
-# Personaje de Star Wars (con nombre y planeta)
 class Personaje:
     def __init__(self, nombre, planeta):
         self.nombre = nombre
@@ -10,7 +9,6 @@ class Personaje:
         return f"{self.nombre} ({self.planeta})"
 
 
-# Función para mostrar personajes de ciertos planetas
 def mostrar_personajes_de_planetas(cola, planetas):
     print(f"Personajes de los planetas {planetas}:")
     for i in range(cola.size()):
@@ -19,7 +17,6 @@ def mostrar_personajes_de_planetas(cola, planetas):
             print(personaje)
         cola.arrive(personaje)
 
-# Función para mostrar el planeta de personajes específicos
 def mostrar_planeta_natal(cola, nombres):
     for i in range(cola.size()):
         personaje = cola.attention()
@@ -27,7 +24,6 @@ def mostrar_planeta_natal(cola, nombres):
             print(f"{personaje.nombre} es de {personaje.planeta}")
         cola.arrive(personaje)
 
-# Función para insertar un personaje antes de otro
 def insertar_antes_de(cola, nuevo_personaje, nombre_objetivo):
     cola_temporal = Queue()
     insertado = False
@@ -42,7 +38,6 @@ def insertar_antes_de(cola, nuevo_personaje, nombre_objetivo):
     while cola_temporal.size() > 0:
         cola.arrive(cola_temporal.attention())
 
-# Función para eliminar al personaje después de otro
 def eliminar_despues_de(cola, nombre_objetivo):
     cola_temporal = Queue()
     saltar_siguiente = False
