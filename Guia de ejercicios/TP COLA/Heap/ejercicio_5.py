@@ -1,4 +1,5 @@
 from ClassHeap import HeapMax
+from ClassQueue import Queue
 
 class Request:
     def __init__(self, general_name, planet, description):
