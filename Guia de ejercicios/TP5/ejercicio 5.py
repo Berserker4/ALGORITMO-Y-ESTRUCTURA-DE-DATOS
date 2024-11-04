@@ -1,33 +1,27 @@
 from arbol_avl import BinaryTree
 from cola import Queue
-# Crear un árbol e insertar héroes y villanos
 arbol = BinaryTree()
 arbol.insert_node("Iron Man", {"is_hero": True})
 arbol.insert_node("Thanos", {"is_hero": False})
 arbol.insert_node("Captain America", {"is_hero": True})
 arbol.insert_node("Loki", {"is_hero": False})
-arbol.insert_node("Doctor Str", {"is_hero": True})  # Mal cargado
+arbol.insert_node("Doctor Str", {"is_hero": True})
 arbol.insert_node("Red Skull", {"is_hero": False})
 
-# b. Listar villanos ordenados alfabéticamente
 print("Villanos ordenados alfabéticamente:")
 arbol.inorden_villanos()
 
-# c. Mostrar todos los superhéroes que empiezan con "C"
 print("\nSuperhéroes que comienzan con 'C':")
 arbol.inorden_superheros_start_with("C")
 
-# d. Determinar cuántos superhéroes hay en el árbol
 total_superheroes = arbol.contar_super_heroes()
 print(f"\nTotal de superhéroes en el árbol: {total_superheroes}")
 
-# e. Corregir el nombre de Doctor Strange
-nodo = arbol.search("Doctor Str")  # Búsqueda aproximada
+nodo = arbol.search("Doctor Str") 
 if nodo is not None:
     nodo.value = "Doctor Strange"
 print("\nNombre corregido de Doctor Strange")
 
-# f. Listar los superhéroes en orden descendente
 def inorden_superheroes_descendente(root):
     if root is not None:
         inorden_superheroes_descendente(root.right)
@@ -38,7 +32,6 @@ def inorden_superheroes_descendente(root):
 print("\nSuperhéroes en orden descendente:")
 inorden_superheroes_descendente(arbol.root)
 
-# g. Generar un bosque de héroes y villanos
 heroes_tree = BinaryTree()
 villains_tree = BinaryTree()
 
