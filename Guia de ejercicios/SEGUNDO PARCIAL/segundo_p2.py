@@ -24,8 +24,8 @@ class Graph:
 
     def insert_vertice(self, value):
         nodo = {
-            'value': value,  # Nombre del personaje
-            'aristas': [],   # Aristas que contienen las relaciones
+            'value': value,
+            'aristas': [],   
             'visitado': False,
         }
         self.elements.append(nodo)
@@ -35,15 +35,15 @@ class Graph:
         pos_destino = self.search(destino)
         if pos_origen is not None and pos_destino is not None:
             arista = {
-                'value': destino,  # Nombre del personaje destino
-                'peso': peso       # Cantidad de episodios
+                'value': destino,  
+                'peso': peso       
             }
             self.elements[pos_origen]['aristas'].append(arista)
-            # Añadir arista en el sentido inverso si el grafo no es dirigido
+
             if not self.dirigido:
                 arista_inversa = {
-                    'value': origen,  # Nombre del personaje origen
-                    'peso': peso      # Cantidad de episodios
+                    'value': origen, 
+                    'peso': peso      
                 }
                 self.elements[pos_destino]['aristas'].append(arista_inversa)
 
@@ -59,7 +59,6 @@ class Graph:
         for nodo in self.elements:
             bosque.append(nodo['value'])
             for adyacente in nodo['aristas']:
-                # Se usa la arista como un conjunto (personaje1, personaje2, peso)
                 aristas.arrive([nodo['value'], adyacente['value']], adyacente['peso'])
 
         resultado = []
@@ -75,8 +74,8 @@ class Graph:
                     vertice_des = bosque.pop(destino)
                     vertice_ori = bosque.pop(origen)
 
-                resultado.append((vertice_ori, vertice_des, arista[2]))  # Guardar como (origen, destino, peso)
-                bosque.append(f'{vertice_ori}-{vertice_des}-{arista[2]}')  # Guardar en el bosque
+                resultado.append((vertice_ori, vertice_des, arista[2]))  
+                bosque.append(f'{vertice_ori}-{vertice_des}-{arista[2]}')
         return resultado
 
     def max_episodes_shared(self):
@@ -125,17 +124,14 @@ def cargar_personajes():
 
     return graph
 
-# Cargar personajes y mostrar el grafo
 graph = cargar_personajes()
 graph.show_graph()
 
-# Hallar el árbol de expansión mínimo y verificar si contiene a Yoda
 arbol_minimo = graph.kruskal()
 print("Árbol de Expansión Mínimo:")
 for origen, destino, peso in arbol_minimo:
     print(f"{origen} - {destino} (Episodios: {peso})")
 print("Contiene a Yoda:", graph.has_character("Yoda"))
 
-# Determinar el número máximo de episodios compartidos
 characters, max_episodes = graph.max_episodes_shared()
 print(f"Los personajes que comparten el máximo de episodios son {characters[0]} y {characters[1]} con {max_episodes} episodios.")

@@ -146,15 +146,14 @@ pokedex.insert_pokemon(Pokemon("Lycanroc", 744, ["Roca"]))
 
 print("Búsqueda por número (1):", pokedex.search_pokemon_by_number(1))
 
-# b) Mostrar datos de un Pokémon por número
+# b)
 numero_a_buscar = 1
 pokemon_encontrado = pokedex.search_pokemon_by_number(numero_a_buscar)
 if pokemon_encontrado:
     print(f"Datos del Pokémon con número {numero_a_buscar}: {pokemon_encontrado}")
 else:
     print(f"No se encontró Pokémon con número {numero_a_buscar}")
-
-# b) Búsqueda por proximidad en nombre
+# b)
 nombre_a_buscar = "Squi"
 pokemons_encontrados = pokedex.search_pokemon_by_name(nombre_a_buscar)
 print(f"Pokémons que contienen '{nombre_a_buscar}': {pokemons_encontrados}")
